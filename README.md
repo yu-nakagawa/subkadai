@@ -22,3 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+#facebook認証には、facebookのサイトで/users/auth/facebook/callbackを追加する

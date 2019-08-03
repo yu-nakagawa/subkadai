@@ -23,3 +23,4 @@ Things you may want to cover:
 
 * ...
 #facebook認証には、facebookのサイトで/users/auth/facebook/callbackを追加する
+#modelのbelongs_toのとこにoptional:trueをつけないと、nilがある場合にsaveができない

@@ -16,7 +16,7 @@
 <% end %>
 
 <%= form_for [@micropost, @comment] do |f| %>
-  <%= f.text_field :content
+  <%= f.text_field :content %>
   <br>
   <%= f.submit 'コメントする' %>
 <% end %>

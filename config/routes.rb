@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+
+  get 'likes/destroy'
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users do
     member do
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
 end
   
   resources :relationships,       only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
   get 'sessions/new'
 
   root   'static_pages#home'

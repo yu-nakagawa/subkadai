@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed   
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :likes, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  has_many :notifications,dependent: :destroy
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -61,5 +64,15 @@ class User < ApplicationRecord
                      WHERE follower_id = :user_id"
     Micropost.where("user_id IN (#{following_ids})
                      OR user_id = :user_id", user_id: id)
+  end
+  def visiter
+    return User.find_by(id:visiter_id)
+  end
+  def self.search(search) #ここでのself.はUser.を意味する
+    if search
+      where(['name LIKE ?', "%#{search}%"]) #検索とnameの部分一致を表示。User.は省略
+    else
+      all #全て表示。User.は省略
+    end
   end
 end

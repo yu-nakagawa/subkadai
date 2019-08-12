@@ -1,7 +1,7 @@
 class AddLikesCountToMicroposts < ActiveRecord::Migration[5.1]
    class MigrationUser < ApplicationRecord
     self.table_name = :microposts
-  end
+   end
 
   def up
     _up

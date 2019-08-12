@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190805110253) do
+ActiveRecord::Schema.define(version: 20190806105750) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -41,6 +41,19 @@ ActiveRecord::Schema.define(version: 20190805110253) do
     t.integer "likes_count", default: 0, null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visiter_id"
+    t.integer "visited_id"
+    t.integer "micropost_id"
+    t.integer "comment_id"
+    t.string "action"
+    t.boolean "checked", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visiter_id"], name: "index_notifications_on_visiter_id"
   end
 
   create_table "relationships", force: :cascade do |t|

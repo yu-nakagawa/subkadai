@@ -15,6 +15,7 @@ end
   
   resources :relationships,       only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
+  resources :notifications, only: :index
   get 'sessions/new'
 
   root   'static_pages#home'

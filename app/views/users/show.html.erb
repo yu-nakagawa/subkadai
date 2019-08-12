@@ -14,13 +14,20 @@
   <div class="col-md-8">
      <%= render 'follow_form' if user_signed_in? %>
     <h3>Microposts (<%= @user.microposts.count %>)</h3>
-    <% if @user.microposts.any? %>
-     <% @user.microposts.each do |post| %>
-  <a href="/microposts/<%= post.id %>"><%= post.content %></a>
-  <a href="/microposts/<%= post.id %>"><%= image_tag post.img.url if post.img? %></a>
-  <hr>
-<% end %>
-    <% end %>
+     <!--検索拡張機能  -->
+       <p>content serch</p>
+      <%= form_tag user_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search", :name => nil %>
+        </p>
+      <% end %>
+
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <%# end %>
   </div>
 </div>
 

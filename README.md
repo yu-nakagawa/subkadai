@@ -13,6 +13,7 @@ facebookの認証機能
 ・学んだ点
 #facebook認証には、facebookのサイトで/users/auth/facebook/callbackを追加する
 #modelのbelongs_toのとこにoptional:trueをつけないと、nilがある場合にsaveができない
+rails sが失敗する時、ymlファイルに原因が多い
 
 ・相談したい点
 notification_helper.rbの5行目において、
@@ -30,3 +31,5 @@ visiterからuserオブジェクトを引っ張ってこれないです。
 ーーメモ
 #本番環境用のコールバックURL
 https://subkadai.herokuapp.com/users/auth/facebook/callback
+FACEBOOK_ID='1066178086923178'
+  FACEBOOK_SECRET_KEY='8082c612bcafa70cb7fb43fbc8210144'
